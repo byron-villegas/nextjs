@@ -308,7 +308,7 @@ export default function AddUserComponent({ onUserAdded }: { onUserAdded: (user: 
                         required={form.rut.required}
                         onChange={handleValueChange}
                     />
-                    <span className="text-danger">
+                    <span className="text-danger" id="rut-errors">
                         {form.rut.errors && form.rut.errors.map((error, index) => (
                             <div key={index}>{error}</div>
                         ))}
@@ -326,7 +326,7 @@ export default function AddUserComponent({ onUserAdded }: { onUserAdded: (user: 
                         required={form.nombres.required}
                         onChange={handleValueChange}
                     />
-                    <span className="text-danger">
+                    <span className="text-danger" id="nombres-errors">
                         {form.nombres.errors && form.nombres.errors.map((error, index) => (
                             <div key={index}>{error}</div>
                         ))}
@@ -344,7 +344,7 @@ export default function AddUserComponent({ onUserAdded }: { onUserAdded: (user: 
                         required={form.apellidos.required}
                         onChange={handleValueChange}
                     />
-                    <span className="text-danger">
+                    <span className="text-danger" id="apellidos-errors">
                         {form.apellidos.errors && form.apellidos.errors.map((error, index) => (
                             <div key={index}>{error}</div>
                         ))}
@@ -361,7 +361,7 @@ export default function AddUserComponent({ onUserAdded }: { onUserAdded: (user: 
                         required={form.fechaNacimiento.required}
                         onChange={handleValueChange}
                     />
-                    <span className="text-danger">
+                    <span className="text-danger" id="fechaNacimiento-errors">
                         {form.fechaNacimiento.errors && form.fechaNacimiento.errors.map((error, index) => (
                             <div key={index}>{error}</div>
                         ))}
@@ -379,7 +379,7 @@ export default function AddUserComponent({ onUserAdded }: { onUserAdded: (user: 
                         value={form.edad.value}
                         readOnly
                     />
-                    <span className="text-danger">
+                    <span className="text-danger" id="edad-errors">
                         {form.edad.errors && form.edad.errors.map((error, index) => (
                             <div key={index}>{error}</div>
                         ))}
@@ -408,7 +408,7 @@ export default function AddUserComponent({ onUserAdded }: { onUserAdded: (user: 
                         onChange={handleValueChange}
                     />
                     <label className="form-check-label text-white ms-1" htmlFor="sexoF">Femenino</label>
-                    <span className="text-danger">
+                    <span className="text-danger" id="sexo-errors">
                         {form.sexo.errors && form.sexo.errors.map((error, index) => (
                             <div key={index}>{error}</div>
                         ))}
@@ -426,7 +426,7 @@ export default function AddUserComponent({ onUserAdded }: { onUserAdded: (user: 
                         value={form.saldo.value}
                         onChange={handleValueChange}
                     />
-                    <span className="text-danger">
+                    <span className="text-danger" id="saldo-errors">
                         {form.saldo.errors && form.saldo.errors.map((error, index) => (
                             <div key={index}>{error}</div>
                         ))}
