@@ -106,7 +106,7 @@ test.describe('Users Page Tests', () => {
         await userRutInput.fill('111111111');
         await userNombresInput.fill('Juan Carlos');
         await userApellidosInput.fill('Bodoque Triviño');
-        await userFechaNacimientoInput.fill('1996-06-22');
+        await userFechaNacimientoInput.fill(birthDate);
         await userSexoMasculinoInput.check();
         await userSaldoInput.fill('100000');
 
@@ -124,6 +124,49 @@ test.describe('Users Page Tests', () => {
         await expect(userEdadInput).toHaveValue(age);
         await expect(userSexoMasculinoInput).toBeChecked();
         await expect(userSaldoInput).toHaveValue('100000');
+    });
+
+        test('Users add create user', async ({ page }) => {
+        const userRutInput = page.locator('xpath=//input[@id="rut"]');
+        const userNombresInput = page.locator('xpath=//input[@id="nombres"]');
+        const userApellidosInput = page.locator('xpath=//input[@id="apellidos"]');
+        const userFechaNacimientoInput = page.locator('xpath=//input[@id="fechaNacimiento"]');
+        const userSexoMasculinoInput = page.locator('xpath=//input[@id="sexoM"]');
+        const userSaldoInput = page.locator('xpath=//input[@id="saldo"]');
+
+        const birthDate = '1996-06-22';
+        const age = calculateAge(birthDate).toString();
+
+        await userRutInput.fill('111111111');
+        await userNombresInput.fill('Juan Carlos');
+        await userApellidosInput.fill('Bodoque Triviño');
+        await userFechaNacimientoInput.fill(birthDate);
+        await userSexoMasculinoInput.check();
+        await userSaldoInput.fill('100000');
+
+        const submitButton = page.locator('xpath=//button[@type="submit" and normalize-space(text())="Enviar"]');
+        await expect(submitButton).toBeEnabled();
+        await submitButton.click();
+
+        const usersTable = page.locator('xpath=//table');
+        await expect(usersTable).toBeVisible();
+
+        const userId = page.locator('xpath=//table/tbody/tr[1]/td[1]');
+        await expect(userId).toHaveText('1');
+        const userRut = page.locator('xpath=//table/tbody/tr[1]/td[2]');
+        await expect(userRut).toHaveText('11.111.111-1');
+        const userNombres = page.locator('xpath=//table/tbody/tr[1]/td[3]');
+        await expect(userNombres).toHaveText('Juan Carlos');
+        const userApellidos = page.locator('xpath=//table/tbody/tr[1]/td[4]');
+        await expect(userApellidos).toHaveText('Bodoque Triviño');
+        const userFechaNacimiento = page.locator('xpath=//table/tbody/tr[1]/td[5]');
+        await expect(userFechaNacimiento).toHaveText('1996-06-22');
+        const userEdad = page.locator('xpath=//table/tbody/tr[1]/td[6]');
+        await expect(userEdad).toHaveText(age.toString());
+        const userSexo = page.locator('xpath=//table/tbody/tr[1]/td[7]');
+        await expect(userSexo).toHaveText('M');
+        const userSaldo = page.locator('xpath=//table/tbody/tr[1]/td[8]');
+        await expect(userSaldo).toHaveText('$100.000');
     });
 
     test('Users footer link is active', async ({ page }) => {
