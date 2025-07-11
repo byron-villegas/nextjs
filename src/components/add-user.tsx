@@ -433,6 +433,7 @@ export default function AddUserComponent({ onUserAdded }: { onUserAdded: (user: 
                     </span>
                 </div>
                 <button type="submit" className="btn btn-primary">Enviar</button>
+                <button type="reset" className="btn btn-secondary ms-2" onClick={resetForm}>Limpiar</button>
             </form>
         </div>
     )
