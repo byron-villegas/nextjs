@@ -126,7 +126,7 @@ test.describe('Users Page Tests', () => {
         await expect(userSaldoInput).toHaveValue('100000');
     });
 
-        test('Users add create user', async ({ page }) => {
+    test('Users add create user', async ({ page }) => {
         const userRutInput = page.locator('xpath=//input[@id="rut"]');
         const userNombresInput = page.locator('xpath=//input[@id="nombres"]');
         const userApellidosInput = page.locator('xpath=//input[@id="apellidos"]');
