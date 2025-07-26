@@ -117,3 +117,8 @@ Use this command to run the tests
 ```shell
 npm run test:e2e
 ```
+
+
+## Referential Links
+
+https://medium.com/@mertenercan/nextjs-13-folder-structure-c3453d780366
