@@ -2,21 +2,9 @@
 
 import User from "@model/user";
 import "@style/ListUserComponent.css"; // Import local styles
+import Utils from "../utils/utils";
 
 export default function ListUserComponent({ users } : { users: User[] } ) {
-    const onRowMouseMove = (e: any) => {
-        e.currentTarget.classList.add('hovered');
-    };
-
-    const onRowMouseLeave = (e: any) => {
-        e.currentTarget.classList.remove('hovered');
-    };
-
-    const formatBalance = (value: any) => {
-        let numberValue = Number(value) || 0;
-        return `$${numberValue.toLocaleString('es-CL')}`;
-    }
-
     return (
         <div>
             <h3 className="text-white">Users</h3>
@@ -35,7 +23,7 @@ export default function ListUserComponent({ users } : { users: User[] } ) {
                 </thead>
                 <tbody>
                     {users.map((user, index) => (
-                        <tr key={index} className="pointer" onMouseMove={onRowMouseMove} onMouseLeave={onRowMouseLeave}>
+                        <tr key={index} className="pointer" onMouseMove={Utils.Events.Table.onRowMouseMove} onMouseLeave={Utils.Events.Table.onRowMouseLeave}>
                             <td>{index + 1}</td>
                             <td>{user.rut}</td>
                             <td>{user.nombres}</td>
@@ -43,7 +31,7 @@ export default function ListUserComponent({ users } : { users: User[] } ) {
                             <td>{user.fechaNacimiento}</td>
                             <td>{user.edad}</td>
                             <td>{user.sexo}</td>
-                            <td>{formatBalance(user.saldo)}</td>
+                            <td>{Utils.Functions.Format.balance(user.saldo)}</td>
                         </tr>
                     ))}
                 </tbody>
